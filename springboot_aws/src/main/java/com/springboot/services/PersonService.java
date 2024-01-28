@@ -6,9 +6,11 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.data.PersonVO;
+import com.springboot.data.v1.PersonVO;
+import com.springboot.data.v2.PersonVOV2;
 import com.springboot.exceptions.ResourceNotFoundException;
 import com.springboot.mappers.DozerMapper;
+import com.springboot.mappers.custom.PersonMapper;
 import com.springboot.models.Person;
 import com.springboot.repositories.PersonRepository;
 
@@ -19,6 +21,9 @@ public class PersonService {
 	
 	@Autowired
 	PersonRepository repository;
+
+	@Autowired
+	PersonMapper mapperPerson;
 
 	public List<PersonVO> findAll() {
 
@@ -44,6 +49,14 @@ public class PersonService {
 		return vo;
 	}
 	
+	public PersonVOV2 createV2(PersonVOV2 person) {
+
+		logger.info("Creating one person!");
+		var entity = mapperPerson.convertVOToEntity(person);
+		var vo =  mapperPerson.convertEntityToVO(repository.save(entity));
+		return vo;
+	}	
+
 	public PersonVO update(PersonVO person) {
 		
 		logger.info("Updating one person!");

@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.data.PersonVO;
+import com.springboot.data.v1.PersonVO;
+import com.springboot.data.v2.PersonVOV2;
 import com.springboot.services.PersonService;
 
 @RestController
@@ -48,6 +49,13 @@ public class PersonController {
 		return PersonService.create(PersonVO);
 	}
 
+	//surgiu a "necessidade" de adicionar mais um campo, para não quebrar os clientes que já utilizam, uma possibilidade é adicionar uma nova rota.
+	@PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	public PersonVOV2 createV2(@RequestBody PersonVOV2 PersonVOV2) {
+		logger.info("Creating a PersonVO!");
+		return PersonService.createV2(PersonVOV2);
+	}	
 	@PutMapping(value = "/{id}",
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
