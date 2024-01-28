@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.springboot.data.vo.v1.PersonVO;
+import com.springboot.data.PersonVO;
 import com.springboot.mappers.DozerMapper;
 import com.springboot.models.Person;
 import com.springboot.unittests.mappers.mocks.MockPerson;

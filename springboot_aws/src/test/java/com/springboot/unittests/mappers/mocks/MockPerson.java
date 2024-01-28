@@ -3,7 +3,7 @@ package com.springboot.unittests.mappers.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.springboot.data.vo.v1.PersonVO;
+import com.springboot.data.PersonVO;
 import com.springboot.models.Person;
 
 public class MockPerson {

@@ -16,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.data.vo.v1.PersonVO;
+import com.springboot.data.PersonVO;
 import com.springboot.services.PersonService;
 
 @RestController
-@RequestMapping("/PersonVO")
+@RequestMapping("/person")
 public class PersonController {
 
 	private Logger logger = LoggerFactory.getLogger(PersonService.class);
 
 	@Autowired
-	private PersonService PersonVOService;
+	private PersonService PersonService;
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public PersonVO findById(@PathVariable("id") Long id) {
@@ -38,7 +38,7 @@ public class PersonController {
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<PersonVO> findAll() {
 		logger.info("Finding all PersonVOs!");
-		return PersonService.findall();
+		return PersonService.findAll();
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -53,13 +53,13 @@ public class PersonController {
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public PersonVO update(@RequestBody PersonVO PersonVO) {
 		logger.info("Updating a PersonVO!");
-		return PersonVOService.update(PersonVO);
+		return PersonService.update(PersonVO);
 	}
 
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id){
 		logger.info("Deleting a PersonVO!");
-		PersonVOService.delete(id);
+		PersonService.delete(id);
 		return ResponseEntity.noContent().build();	
 	}
 
