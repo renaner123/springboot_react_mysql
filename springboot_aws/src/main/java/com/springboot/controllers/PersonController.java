@@ -23,7 +23,7 @@ import com.springboot.services.PersonService;
 import com.springboot.utils.MediaType;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
 	private Logger logger = LoggerFactory.getLogger(PersonService.class);
