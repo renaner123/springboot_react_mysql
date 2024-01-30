@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.controllers.PersonController;
 import com.springboot.data.vo.PersonVO;
+import com.springboot.exceptions.RequiredObjectsNullException;
 import com.springboot.exceptions.ResourceNotFoundException;
 import com.springboot.mappers.DozerMapper;
 import com.springboot.mappers.custom.PersonMapper;
@@ -52,6 +53,8 @@ public class PersonService {
 	
 	public PersonVO create(PersonVO person) {
 
+		if (person == null) throw new RequiredObjectsNullException();
+
 		logger.info("Creating one person!");
 		var entity = DozerMapper.parseObject(person, Person.class);
 		var vo =  DozerMapper.parseObject(repository.save(entity), PersonVO.class);
@@ -69,6 +72,7 @@ public class PersonService {
 	// }	
 
 	public PersonVO update(PersonVO person) {
+		if (person == null) throw new RequiredObjectsNullException();
 		
 		logger.info("Updating one person!");
 		
