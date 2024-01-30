@@ -41,3 +41,12 @@ puglin maven - flyway-maven-plugin
     </plugin>
 </plugins>
 ```
+
+Acessar json do swagger:
+http://localhost:8080/v3/api-docs
+
+Acessar a interface:
+http://localhost:8080/swagger-ui/index.html
+
+
+
