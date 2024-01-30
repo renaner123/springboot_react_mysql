@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.data.v1.PersonVO;
-import com.springboot.data.v2.PersonVOV2;
+import com.springboot.data.vo.PersonVO;
+import com.springboot.data.vo.PersonVOV2;
 import com.springboot.services.PersonService;
 import com.springboot.utils.MediaType;
 
@@ -55,13 +55,13 @@ public class PersonController {
 
 	// surgiu a "necessidade" de adicionar mais um campo, para não quebrar os
 	// clientes que já utilizam, uma possibilidade é adicionar uma nova rota.
-	@PostMapping(value = "/v2", consumes = { MediaType.APPLICATION_JSON,
-			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, produces = { MediaType.APPLICATION_JSON,
-					MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-	public PersonVOV2 createV2(@RequestBody PersonVOV2 PersonVOV2) {
-		logger.info("Creating a PersonVO!");
-		return PersonService.createV2(PersonVOV2);
-	}
+//	@PostMapping(value = "/v2", consumes = { MediaType.APPLICATION_JSON,
+//			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, produces = { MediaType.APPLICATION_JSON,
+//					MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+//	public PersonVOV2 createV2(@RequestBody PersonVOV2 PersonVOV2) {
+//		logger.info("Creating a PersonVO!");
+//		return PersonService.createV2(PersonVOV2);
+//	}
 
 	@PutMapping(value = "/{id}", consumes = { MediaType.APPLICATION_JSON,
 			MediaType.APPLICATION_XML, MediaType.APPLICATION_YML }, produces = { MediaType.APPLICATION_JSON,

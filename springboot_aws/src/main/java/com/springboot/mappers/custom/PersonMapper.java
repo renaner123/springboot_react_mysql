@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import com.springboot.data.v2.PersonVOV2;
+import com.springboot.data.vo.PersonVOV2;
 import com.springboot.models.Person;
 
 @Service

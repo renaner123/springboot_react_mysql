@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.controllers.PersonController;
-import com.springboot.data.v1.PersonVO;
+import com.springboot.data.vo.PersonVO;
 import com.springboot.exceptions.ResourceNotFoundException;
 import com.springboot.mappers.DozerMapper;
 import com.springboot.mappers.custom.PersonMapper;
