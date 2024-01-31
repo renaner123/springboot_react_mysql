@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.controllers.BookController;
+import com.springboot.controllers.PersonController;
 import com.springboot.data.vo.BookVO;
 import com.springboot.exceptions.RequiredObjectsNullException;
 import com.springboot.exceptions.ResourceNotFoundException;
@@ -30,7 +31,10 @@ public class BookService {
         logger.info("Finding all books!");
 
         var books = DozerMapper.parseListObjects(repository.findAll(), BookVO.class);
-         return books;
+		books
+			.stream()
+			.forEach(p -> p.add(linkTo(methodOn(BookController.class).findById(p.getKey())).withSelfRel()));
+        return books;
     }
 
     public BookVO findById(Long id){
