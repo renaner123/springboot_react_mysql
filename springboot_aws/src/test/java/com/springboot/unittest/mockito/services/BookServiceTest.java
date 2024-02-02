@@ -24,7 +24,7 @@ import com.springboot.data.vo.BookVO;
 import com.springboot.exceptions.RequiredObjectsNullException;
 import com.springboot.models.Book;
 import com.springboot.repositories.BookRepository;
-import com.springboot.services.BookService;
+import com.springboot.services.BookServices;
 import com.springboot.unittests.mappers.mocks.MockBook;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -34,7 +34,7 @@ class BookServiceTest {
 	MockBook input;
 
 	@InjectMocks
-	private BookService service;
+	private BookServices service;
 
 	@Mock
 	BookRepository repository;

@@ -23,7 +23,7 @@ import com.springboot.data.vo.PersonVO;
 import com.springboot.exceptions.RequiredObjectsNullException;
 import com.springboot.models.Person;
 import com.springboot.repositories.PersonRepository;
-import com.springboot.services.PersonService;
+import com.springboot.services.PersonServices;
 import com.springboot.unittests.mappers.mocks.MockPerson;
 
 
@@ -34,7 +34,7 @@ class PersonServiceTest {
 	MockPerson input;
 
 	@InjectMocks
-	private PersonService service;
+	private PersonServices service;
 
 	@Mock
 	PersonRepository repository;

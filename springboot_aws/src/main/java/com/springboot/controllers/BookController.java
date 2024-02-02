@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.data.vo.BookVO;
-import com.springboot.services.BookService;
+import com.springboot.services.BookServices;
 import com.springboot.utils.MediaType;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class BookController {
 	
 	@Autowired
-	private BookService service;
+	private BookServices service;
 	
 	@GetMapping(
 		produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })

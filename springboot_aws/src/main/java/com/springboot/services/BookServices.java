@@ -19,9 +19,9 @@ import com.springboot.models.Book;
 import com.springboot.repositories.BookRepository;
 
 @Service
-public class BookService {
+public class BookServices {
 
-    private Logger logger = Logger.getLogger(BookService.class.getName());
+    private Logger logger = Logger.getLogger(BookServices.class.getName());
     
     @Autowired
     private BookRepository repository;

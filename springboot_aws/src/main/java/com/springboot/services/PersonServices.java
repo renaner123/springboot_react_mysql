@@ -19,9 +19,9 @@ import com.springboot.models.Person;
 import com.springboot.repositories.PersonRepository;
 
 @Service
-public class PersonService {
+public class PersonServices {
 	
-	private Logger logger = Logger.getLogger(PersonService.class.getName());
+	private Logger logger = Logger.getLogger(PersonServices.class.getName());
 	
 	@Autowired
 	PersonRepository repository;

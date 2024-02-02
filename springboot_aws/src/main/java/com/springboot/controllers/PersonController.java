@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.data.vo.PersonVO;
-import com.springboot.services.PersonService;
+import com.springboot.services.PersonServices;
 import com.springboot.utils.MediaType;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class PersonController {
 	
 	@Autowired
-	private PersonService service;
+	private PersonServices service;
 	
 	@GetMapping(
 		produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
