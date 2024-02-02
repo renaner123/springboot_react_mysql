@@ -1,4 +1,4 @@
-package com.springboot.IntegrationTest.Swagger;
+package com.springboot.IntegrationTest.swagger;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertTrue;
