@@ -1,7 +1,7 @@
 package com.springboot.data.vo.security;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class TokenVO implements Serializable{
 
@@ -14,7 +14,9 @@ public class TokenVO implements Serializable{
     private String acessToken;
     private String refreshToken;
 
-    public TokenVO(String username, Boolean authenticated, Date created, Date expiration, String acessToken, String refreshToken) {
+ 
+    public TokenVO(String username, Boolean authenticated, Date created, Date expiration, String acessToken,
+            String refreshToken) {
         this.username = username;
         this.authenticated = authenticated;
         this.created = created;
