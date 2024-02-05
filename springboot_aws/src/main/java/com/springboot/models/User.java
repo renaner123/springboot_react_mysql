@@ -22,7 +22,12 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User implements UserDetails{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
@@ -48,7 +53,7 @@ public class User implements UserDetails{
     //Eager carrega todos os dados de uma vez
     //Lazy carrega os dados apenas quando necessário
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_permission", 
+    @JoinTable(name = "user_permission", 
         joinColumns = @JoinColumn(name = "id_user"),
         inverseJoinColumns = @JoinColumn(name = "id_permission"))
     private List<Permission> permissions;

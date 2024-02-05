@@ -1,5 +1,7 @@
 package com.springboot.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +17,8 @@ import com.springboot.security.jwt.JwtTokenProvider;
 
 @Service
 public class AuthServices {
+	
+	private Logger logger = LoggerFactory.getLogger(AuthServices.class);
 
 	@Autowired
 	private JwtTokenProvider tokenProvider;
@@ -31,9 +35,16 @@ public class AuthServices {
 			var username = data.getUsername();
 			var password = data.getPassword();
 			
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			logger.info("Starting the autheticate process");
+			
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(username, password));
+
+			logger.info("Finding a userByName " + username);
 			
 			var user = repository.findByUsername(username);
+			
+			logger.info("User " + username + " successfully located");
 			
 			var tokenResponse = new TokenVO();
 			
@@ -45,6 +56,7 @@ public class AuthServices {
 			
 			return ResponseEntity.ok(tokenResponse);
 		} catch (Exception e) {
+			logger.error("Error trying to sign in user ", e);
 			throw new BadCredentialsException("Invalid username/password supplied");
 		}
 	}

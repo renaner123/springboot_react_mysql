@@ -13,7 +13,12 @@ import jakarta.persistence.Table;
 @Table(name = "permission")
 public class Permission implements GrantedAuthority {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
