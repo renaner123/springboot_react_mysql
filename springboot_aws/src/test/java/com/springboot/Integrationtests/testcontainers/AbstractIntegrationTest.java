@@ -1,4 +1,4 @@
-package com.springboot.IntegrationTest.testcontainers;
+package com.springboot.Integrationtests.testcontainers;
 
 import java.util.Map;
 import java.util.stream.Stream;

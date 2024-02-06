@@ -1,4 +1,4 @@
-package com.springboot.IntegrationTest.VO;
+package com.springboot.Integrationtests.VO;
 
 import java.io.Serializable;
 import java.util.Date;

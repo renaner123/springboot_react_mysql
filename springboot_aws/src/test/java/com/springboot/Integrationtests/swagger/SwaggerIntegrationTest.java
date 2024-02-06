@@ -1,4 +1,4 @@
-package com.springboot.IntegrationTest.swagger;
+package com.springboot.Integrationtests.swagger;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.springboot.IntegrationTest.testcontainers.AbstractIntegrationTest;
+import com.springboot.Integrationtests.testcontainers.AbstractIntegrationTest;
 import com.springboot.configs.TestConfigs;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)

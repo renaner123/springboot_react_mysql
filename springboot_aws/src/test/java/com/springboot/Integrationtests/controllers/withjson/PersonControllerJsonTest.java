@@ -1,4 +1,4 @@
-package com.springboot.IntegrationTest.controllers;
+package com.springboot.Integrationtests.controllers.withjson;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -16,10 +16,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springboot.IntegrationTest.VO.AccountCredentialsVO;
-import com.springboot.IntegrationTest.VO.PersonVO;
-import com.springboot.IntegrationTest.VO.TokenVO;
-import com.springboot.IntegrationTest.testcontainers.AbstractIntegrationTest;
+import com.springboot.Integrationtests.VO.AccountCredentialsVO;
+import com.springboot.Integrationtests.VO.PersonVO;
+import com.springboot.Integrationtests.VO.TokenVO;
+import com.springboot.Integrationtests.testcontainers.AbstractIntegrationTest;
 import com.springboot.configs.TestConfigs;
 
 import io.restassured.builder.RequestSpecBuilder;
