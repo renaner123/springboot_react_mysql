@@ -2,6 +2,9 @@ package com.springboot.Integrationtests.VO;
 
 import java.io.Serializable;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class AccountCredentialsVO implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -13,6 +16,7 @@ public class AccountCredentialsVO implements Serializable{
         this.username = username;
         this.password = password;
     }
+    public AccountCredentialsVO() {}
 
     public static long getSerialversionuid() {
         return serialVersionUID;
