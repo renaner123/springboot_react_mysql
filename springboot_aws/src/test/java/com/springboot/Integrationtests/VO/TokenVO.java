@@ -66,15 +66,7 @@ public class TokenVO implements Serializable{
     public void setExpiration(Date expiration) {
         this.expiration = expiration;
     }
-
-    public String getaccessToken() {
-        return accessToken;
-    }
-
-    public void setaccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
+    
     public String getRefreshToken() {
         return refreshToken;
     }
@@ -136,6 +128,14 @@ public class TokenVO implements Serializable{
         } else if (!refreshToken.equals(other.refreshToken))
             return false;
         return true;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     
