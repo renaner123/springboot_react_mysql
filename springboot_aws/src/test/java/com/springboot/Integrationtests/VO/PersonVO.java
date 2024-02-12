@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
@@ -13,11 +14,13 @@ public class PersonVO implements Serializable {
 
 	private Long id;
 
-	@JsonProperty("first_name")
-	private String firstName;
+    @JsonProperty("first_name")
+    @JacksonXmlProperty(localName = "first_name")
+	private String first_name;
 
-	@JsonProperty("last_name")
-	private String lastName;
+    @JsonProperty("last_name")
+    @JacksonXmlProperty(localName = "last_name")
+	private String last_name;
 	private String address;
 
 	public static long getSerialversionuid() {
@@ -36,20 +39,20 @@ public class PersonVO implements Serializable {
 	
 	public PersonVO() {}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirst_name(String firstName) {
+		this.first_name = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLast_name(String lastName) {
+		this.last_name = lastName;
 	}
 
 	public String getAddress() {
@@ -70,7 +73,7 @@ public class PersonVO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, firstName, gender, id, lastName);
+		return Objects.hash(address, first_name, gender, id, last_name);
 	}
 
 	@Override
@@ -82,9 +85,9 @@ public class PersonVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PersonVO other = (PersonVO) obj;
-		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
+		return Objects.equals(address, other.address) && Objects.equals(first_name, other.first_name)
 				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
-				&& Objects.equals(lastName, other.lastName);
+				&& Objects.equals(last_name, other.last_name);
 	}
 	
 	

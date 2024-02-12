@@ -96,15 +96,15 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 
 		assertNotNull(createdPerson);
 		assertNotNull(createdPerson.getId());
-		assertNotNull(createdPerson.getFirstName());
-		assertNotNull(createdPerson.getLastName());
+		assertNotNull(createdPerson.getFirst_name());
+		assertNotNull(createdPerson.getLast_name());
 		assertNotNull(createdPerson.getAddress());
 		assertNotNull(createdPerson.getGender());
 
 		assertTrue(createdPerson.getId() > 0);
 
-		assertEquals("First Name", createdPerson.getFirstName());
-		assertEquals("Last Name",createdPerson.getLastName());
+		assertEquals("First Name", createdPerson.getFirst_name());
+		assertEquals("Last Name",createdPerson.getLast_name());
 		assertEquals("Address", createdPerson.getAddress());
 		assertEquals("Male", createdPerson.getGender());
 	}
@@ -134,8 +134,8 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 
 	private void mockPerson() {
 		//precisa do contexto do spring para funcionar, por isso não fica no setup()
-		person.setFirstName("First Name");
-		person.setLastName("Last Name");
+		person.setFirst_name("First Name");
+		person.setLast_name("Last Name");
 		person.setAddress("Address");
 		person.setGender("Male");
 	}
@@ -163,15 +163,15 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 
 		assertNotNull(persistedPerson);
 		assertNotNull(persistedPerson.getId());
-		assertNotNull(persistedPerson.getFirstName());
-		assertNotNull(persistedPerson.getLastName());
+		assertNotNull(persistedPerson.getFirst_name());
+		assertNotNull(persistedPerson.getLast_name());
 		assertNotNull(persistedPerson.getAddress());
 		assertNotNull(persistedPerson.getGender());
 
 		assertTrue(persistedPerson.getId() > 0);
 
-		assertEquals("First Name", persistedPerson.getFirstName());
-		assertEquals("Last Name",persistedPerson.getLastName());
+		assertEquals("First Name", persistedPerson.getFirst_name());
+		assertEquals("Last Name",persistedPerson.getLast_name());
 		assertEquals("Address", persistedPerson.getAddress());
 		assertEquals("Male", persistedPerson.getGender());
 	}
