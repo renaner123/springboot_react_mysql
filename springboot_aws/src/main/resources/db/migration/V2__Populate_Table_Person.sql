@@ -1,3 +1,8 @@
-LOCK TABLES `person` WRITE;
-INSERT INTO `person` VALUES (2,'Uberlandia - Minas Gerais - Brasil','Rodolfo','Male','Costa'),(4,'Uberlandia - Minas Gerais - Brasil','Rodolfo','Male','Costa'),(5,'Uberlandia - Minas Gerais - Brasil','Renan','Male','Costa'),(6,'Uberlandia - Minas Gerais - Brasil','Lara','Male','Costa'),(7,'Uberlandia - Minas Gerais - Brasil','Lara','Male','Costa'),(8,'Uberlandia - Minas Gerais - Brasil','Lara','Male','Costa');
-UNLOCK TABLES;
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES
+	(1, 'São Paulo', 'Ayrton', 'Male', 'Senna'),
+	(2, 'Anchiano - Italy', 'Leonardo', 'Male', 'da Vinci'),
+	(4, 'Porbandar - India', 'Indira', 'Female', 'Gandhi'),
+	(5, 'Porbandar - India', 'Mahatma', 'Male', 'Gandhi'),
+	(7, 'Kentucky - US', 'Muhammad', 'Male', 'Ali'),
+	(9, 'Mvezo – South Africa', 'Nelson', 'Male', 'Mvezo'),
+	(10, 'Smiljan - Croácia', 'Nikola', 'Male', 'Tesla');
