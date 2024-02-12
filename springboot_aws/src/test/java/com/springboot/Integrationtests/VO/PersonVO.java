@@ -16,6 +16,7 @@ public class PersonVO implements Serializable {
 
     @JsonProperty("first_name")
     @JacksonXmlProperty(localName = "first_name")
+    //FIXME this is not working. If i use firstName the property name is not changed in the xml
 	private String first_name;
 
     @JsonProperty("last_name")
