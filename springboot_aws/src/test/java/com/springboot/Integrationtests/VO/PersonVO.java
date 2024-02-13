@@ -6,6 +6,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import jakarta.persistence.Column;
 import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class PersonVO implements Serializable {
@@ -23,6 +24,15 @@ public class PersonVO implements Serializable {
     @JacksonXmlProperty(localName = "last_name")
 	private String last_name;
 	private String address;
+    private Boolean enabled;
+    
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -74,7 +84,7 @@ public class PersonVO implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, first_name, gender, id, last_name);
+		return Objects.hash(address, enabled, first_name, gender, id, last_name);
 	}
 
 	@Override
@@ -86,11 +96,12 @@ public class PersonVO implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PersonVO other = (PersonVO) obj;
-		return Objects.equals(address, other.address) && Objects.equals(first_name, other.first_name)
-				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
-				&& Objects.equals(last_name, other.last_name);
+		return Objects.equals(address, other.address) && Objects.equals(enabled, other.enabled)
+				&& Objects.equals(first_name, other.first_name) && Objects.equals(gender, other.gender)
+				&& Objects.equals(id, other.id) && Objects.equals(last_name, other.last_name);
 	}
-	
+
+
 	
 
 
