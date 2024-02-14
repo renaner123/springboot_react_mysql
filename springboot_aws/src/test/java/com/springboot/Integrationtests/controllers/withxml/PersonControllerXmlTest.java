@@ -21,6 +21,7 @@ import com.springboot.Integrationtests.VO.AccountCredentialsVO;
 import com.springboot.Integrationtests.VO.PagedModelPerson;
 import com.springboot.Integrationtests.VO.PersonVO;
 import com.springboot.Integrationtests.VO.TokenVO;
+import com.springboot.Integrationtests.VO.wrappers.WrapperPersonVO;
 //import com.springboot.data.vo.security.TokenVO;
 import com.springboot.Integrationtests.testcontainers.AbstractIntegrationTest;
 import com.springboot.configs.TestConfigs;
@@ -307,6 +308,44 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 	
 	@Test
 	@Order(8)
+	public void testFindByName() throws JsonMappingException, JsonProcessingException {
+		
+		var content = given().spec(specification)
+				.contentType(TestConfigs.CONTENT_TYPE_XML)
+				.pathParam("firstName", "ayr")
+				.queryParams("page", 0, "size", 6, "direction", "asc")
+				.accept(TestConfigs.CONTENT_TYPE_XML)
+					.when()
+					.get("/findPersonByName/{firstName}")
+				.then()
+					.statusCode(200)
+						.extract()
+						.body()
+							.asString();
+		
+		PagedModelPerson wrapper = objectMapper.readValue(content, PagedModelPerson.class);
+		var people = wrapper.getContent();
+		
+		PersonVO foundPersonOne = people.get(0);
+		
+		assertNotNull(foundPersonOne.getId());
+		assertNotNull(foundPersonOne.getFirst_name());
+		assertNotNull(foundPersonOne.getLast_name());
+		assertNotNull(foundPersonOne.getAddress());
+		assertNotNull(foundPersonOne.getGender());
+		assertTrue(foundPersonOne.getEnabled());
+		
+		assertEquals(Long.valueOf(1), foundPersonOne.getId());
+		
+		assertEquals("Ayrton", foundPersonOne.getFirst_name());
+		assertEquals("Senna", foundPersonOne.getLast_name());
+		assertEquals("São Paulo", foundPersonOne.getAddress());
+		assertEquals("Male", foundPersonOne.getGender());
+		assertTrue(foundPersonOne.getEnabled());	
+	}
+	
+	@Test
+	@Order(9)
 	public void testFindAllWithoutToken() throws JsonMappingException, JsonProcessingException {
 		
 		RequestSpecification specificationWithoutToken = new RequestSpecBuilder()
