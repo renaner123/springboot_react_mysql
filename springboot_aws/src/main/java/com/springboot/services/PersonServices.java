@@ -3,10 +3,11 @@ package com.springboot.services;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.springboot.controllers.PersonController;
@@ -31,15 +32,15 @@ public class PersonServices {
 	@Autowired
 	PersonMapper mapperPerson;
 
-	public List<PersonVO> findAll() {
+	public Page<PersonVO> findAll(Pageable pageable) {
 
 		logger.info("Finding all people!");
+		var personPage = repository.findAll(pageable);
+		var personVosPage = personPage.map(p -> DozerMapper.parseObject(p, PersonVO.class));
+		personVosPage.stream()
+				.forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
 
-		var persons = DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
-		persons
-			.stream()
-			.forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
-		return persons;
+		return personVosPage;
 	}
 
 	public PersonVO findById(Long id) {
