@@ -3,7 +3,7 @@ server:
 cors:
     originPatterns: http://localhost:3000,http://localhost:8080
 file:
-    upload-dir: /Codes
+    upload-dir: /home/runner/work/springboot_aws/UploadDir
 security:
     jwt:
         token:
