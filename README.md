@@ -1,3 +1,5 @@
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/renandocker123/springboot_aws.svg)](https://hub.docker.com/repository/docker/renandocker123/springboot_aws)
+
 "# springboot_aws"
 
 restaurar o banco pelo terminal - aplicar migration - precisa porta 8080 liberada (apagar as tabelas antes)

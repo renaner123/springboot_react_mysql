@@ -140,7 +140,7 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 		person.setGender("Male");
 		person.setEnabled(true);
 	}
-
+//
 	@Test
 	@Order(3)
 	public void testFindById() throws JsonMappingException, JsonProcessingException{
@@ -179,6 +179,19 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 
 	@Test
 	@Order(4)
+	public void testDelete() throws JsonMappingException, JsonProcessingException {
+
+		given().spec(specification)
+			.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.pathParam("id", person.getId())
+				.when()
+				.delete("{id}")
+			.then()
+				.statusCode(204);
+	}
+	
+	@Test
+	@Order(5)
 	public void testFindByIdWithWrongOrigin() throws JsonMappingException, JsonProcessingException{
 		mockPerson();
 
@@ -205,5 +218,7 @@ public class PersonControllerCorsJsonTest extends AbstractIntegrationTest {
 		assertNotNull(content);
 		assertEquals("Invalid CORS request", content);
 	}
+	
+
 
 }
