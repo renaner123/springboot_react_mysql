@@ -12,7 +12,7 @@ export default function Books() {
             <header>
                 <img src={logoImage} alt="Application logo" />
                 <span>Welcome, <strong>Renan</strong> </span>
-                <Link className="button" to="books/new">Add new Book</Link>
+                <Link className="button" to="/books/new">Add new Book</Link>
                 <button type="button">
                     <FiPower size={18} color="#251FC5" />
                 </button>
