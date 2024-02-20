@@ -13,6 +13,11 @@ export default function Books() {
     const [books, setBooks] = useState([]);
     const navigate = useNavigate();
 
+    async function handleLogout() {
+        localStorage.clear();
+        navigate('/');
+    }
+
     async function handleDeleteBook(id) {
         try {
             await api.delete(`api/book/v1/${id}`, {
@@ -51,7 +56,7 @@ export default function Books() {
                 <img src={logoImage} alt="Application logo" />
                 <span>Welcome, <strong>{username.toUpperCase()}</strong> </span>
                 <Link className="button" to="/books/new">Add new Book</Link>
-                <button type="button">
+                <button onClick={() => handleLogout()} type="button">
                     <FiPower size={18} color="#251FC5" />
                 </button>
             </header>
