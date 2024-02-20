@@ -32,6 +32,14 @@ export default function Books() {
         }
     }
 
+    async function handleEditBook(id) {
+        try {
+            navigate(`/books/new/${id}`);
+        } catch (err) {
+            alert('Edit failed!, try again.');
+        }
+    }
+
     useEffect(() => {
         api.get('api/book/v1', {
             headers: {
@@ -55,7 +63,7 @@ export default function Books() {
             <header>
                 <img src={logoImage} alt="Application logo" />
                 <span>Welcome, <strong>{username.toUpperCase()}</strong> </span>
-                <Link className="button" to="/books/new">Add new Book</Link>
+                <Link className="button" to="/books/new/0">Add new Book</Link>
                 <button onClick={() => handleLogout()} type="button">
                     <FiPower size={18} color="#251FC5" />
                 </button>
@@ -77,7 +85,7 @@ export default function Books() {
                         <strong>Release Date:</strong>
                         <p>{Intl.DateTimeFormat('pt-BR').format(book.release_date)}</p>
 
-                        <button type="button">
+                        <button onClick={() => handleEditBook(book.id)} type="button">
                             <FiEdit size={20} color="#251FC5" />
                         </button>
 
