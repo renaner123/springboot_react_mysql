@@ -11,6 +11,7 @@ export default function Books() {
     const username = localStorage.getItem('username');
     const accessToken = localStorage.getItem('accessToken');
     const [books, setBooks] = useState([]);
+    const [page, setPage] = useState(0);
     const navigate = useNavigate();
 
     async function handleLogout() {
@@ -39,22 +40,27 @@ export default function Books() {
             alert('Edit failed!, try again.');
         }
     }
-
-    useEffect(() => {
-        api.get('api/book/v1', {
+    async function fetchMoreBooks(){
+        const response = await api.get('api/book/v1', {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             },
             params:
             {
-                page: 1,
+                page: page,
                 size: 4,
                 direction: 'asc'
             }
-        }).then(response => {
-            setBooks(response.data._embedded.bookVOList)
-            console.log(response.data);
-        })
+        });
+
+        if (response && response.data && response.data._embedded && response.data._embedded.bookVOList) {
+            setBooks([...books, ...response.data._embedded.bookVOList]);
+            setPage(page + 1);
+        } 
+    }
+
+    useEffect(() => {
+        fetchMoreBooks();
     }, []);
 
     return (
@@ -95,6 +101,7 @@ export default function Books() {
                     </li>
                 ))}
             </ul>
+            <button className="button" onClick={fetchMoreBooks} type="button">Load more</button>
         </div>
 
     );
