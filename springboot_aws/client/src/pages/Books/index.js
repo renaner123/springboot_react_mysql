@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiEdit, FiPower, FiTrash2 } from 'react-icons/fi';
 import './styles.css';
 
@@ -7,23 +7,44 @@ import api from '../../services/api';
 
 import logoImage from '../../asserts/logo.svg';
 
-export default function Books() { 
+export default function Books() {
     const username = localStorage.getItem('username');
     const accessToken = localStorage.getItem('accessToken');
     const [books, setBooks] = useState([]);
+    const navigate = useNavigate();
+
+    async function handleDeleteBook(id) {
+        try {
+            await api.delete(`api/book/v1/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+
+            setBooks(books.filter(book => book.id !== id));
+        } catch (err) {
+            alert('Error deleting book, try again.');
+        }
+    }
 
     useEffect(() => {
         api.get('api/book/v1', {
             headers: {
                 Authorization: `Bearer ${accessToken}`
+            },
+            params:
+            {
+                page: 1,
+                size: 4,
+                direction: 'asc'
             }
         }).then(response => {
-            setBooks(response.data)
+            setBooks(response.data._embedded.bookVOList)
             console.log(response.data);
         })
-    });
+    }, []);
 
-    return (       
+    return (
 
         <div className="book-container">
             <header>
@@ -38,7 +59,7 @@ export default function Books() {
             <h1>Registered Books</h1>
             <ul>
                 {books.map(book => (
-                    <li>
+                    <li key={book.id}>
                         <strong>Title:</strong>
                         <p>{book.title}</p>
 
@@ -46,25 +67,20 @@ export default function Books() {
                         <p>{book.author}</p>
 
                         <strong>Price:</strong>
-                        <p>{Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(book.price)}</p>
-                        
+                        <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(book.price)}</p>
+
                         <strong>Release Date:</strong>
                         <p>{Intl.DateTimeFormat('pt-BR').format(book.release_date)}</p>
 
                         <button type="button">
                             <FiEdit size={20} color="#251FC5" />
                         </button>
-                        
-                        <button type="button">
+
+                        <button onClick={() => handleDeleteBook(book.id)} type="button">
                             <FiTrash2 size={20} color="#251FC5" />
-                        </button>                
+                        </button>
                     </li>
                 ))}
-                
-
-
-
-            
             </ul>
         </div>
 
