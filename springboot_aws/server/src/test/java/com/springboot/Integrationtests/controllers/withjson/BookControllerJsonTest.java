@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -16,13 +15,13 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.Integrationtests.VO.AccountCredentialsVO;
 import com.springboot.Integrationtests.VO.BookVO;
 import com.springboot.Integrationtests.VO.TokenVO;
+import com.springboot.Integrationtests.VO.wrappers.WrapperBookVO;
 import com.springboot.Integrationtests.testcontainers.AbstractIntegrationTest;
 import com.springboot.configs.TestConfigs;
 
@@ -228,6 +227,7 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 		
 	 	var content = given().spec(specification)
 	 			.contentType(TestConfigs.CONTENT_TYPE_JSON)
+				.queryParams("page", 0, "size", 10, "direction", "asc")
 	 				.when()
 	 				.get()
 	 			.then()
@@ -236,7 +236,8 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 	 					.body()
 	 						.asString();
 		
-	 	List<BookVO> book = objectMapper.readValue(content, new TypeReference<List<BookVO>>() {});
+		WrapperBookVO wrapper = objectMapper.readValue(content, WrapperBookVO.class);
+		var book = wrapper.getEmbedded().getBooks();
 		
 	 	BookVO foundbookOne = book.get(0);
 	 	
@@ -250,12 +251,12 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 		assertNotNull(foundbookOne.getPrice());
 		assertNotNull(foundbookOne.getLaunchDate());		
 
-		assertEquals(foundbookOne.getKey(),Long.valueOf(1));
+		assertEquals(foundbookOne.getKey(),Long.valueOf(12));
 		
-		assertEquals("Michael C. Feathers", foundbookOne.getAuthor());
-		assertEquals("Working effectively with legacy code",foundbookOne.getTitle());
-		assertEquals(Double.valueOf(49), foundbookOne.getPrice());
-		assertEquals(29, calendar.get(Calendar.DAY_OF_MONTH));
+		assertEquals("Viktor Mayer-Schonberger e Kenneth Kukier", foundbookOne.getAuthor());
+		assertEquals("Big Data: como extrair volume, variedade, velocidade e valor da avalanche de informação cotidiana",foundbookOne.getTitle());
+		assertEquals(Double.valueOf(54), foundbookOne.getPrice());
+		assertEquals(07, calendar.get(Calendar.DAY_OF_MONTH));
 		assertEquals(10, calendar.get(Calendar.MONTH));
 		assertEquals(2017, calendar.get(Calendar.YEAR));
 		
@@ -270,11 +271,11 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 		assertNotNull(foundbookSix.getPrice());
 		assertNotNull(foundbookSix.getLaunchDate());
 
-		assertEquals(foundbookSix.getKey(),Long.valueOf(6));		
+		assertEquals(foundbookSix.getKey(),Long.valueOf(11));		
 
-		assertEquals("Martin Fowler e Kent Beck", foundbookSix.getAuthor());
-		assertEquals("Refactoring",foundbookSix.getTitle());
-		assertEquals(Double.valueOf(88), foundbookSix.getPrice());
+		assertEquals("Roger S. Pressman", foundbookSix.getAuthor());
+		assertEquals("Engenharia de Software: uma abordagem profissional",foundbookSix.getTitle());
+		assertEquals(Double.valueOf(56), foundbookSix.getPrice());
 		assertEquals(07, calendar.get(Calendar.DAY_OF_MONTH));
 		assertEquals(10, calendar.get(Calendar.MONTH));
 		assertEquals(2017, calendar.get(Calendar.YEAR));
