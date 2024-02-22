@@ -6,7 +6,6 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.springboot.Integrationtests.VO.BookVO;
-import com.springboot.Integrationtests.VO.PersonVO;
 
 public class BookEmbeddedVO implements Serializable{
 

@@ -53,7 +53,7 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 	@Test
 	@Order(1)
 	public void authorization() throws JsonMappingException, JsonProcessingException{
-		AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+		AccountCredentialsVO user = new AccountCredentialsVO("renan", "admin123");
 		
 		var accessToken = 
 				given()

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { FiArrowLeft, FiEdit, FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiArrowLeft} from 'react-icons/fi';
 import './styles.css';
 
 import api from '../../services/api';
@@ -45,6 +45,7 @@ export default function NewBook() {
         if (bookId !== '0') {
             loadBook(); // Call the loadBook function when bookId is not '0'
         }
+    // eslint-disable-next-line
     }, [bookId]); // Depend on bookId
     
 
@@ -77,9 +78,6 @@ export default function NewBook() {
         }catch(error){
             console.error('Error:', error.message);
         }
-
-        const username = localStorage.getItem('username');
-        const accessToken = localStorage.getItem('accessToken');
 
         try {
             await api.post('api/book/v1', data, {

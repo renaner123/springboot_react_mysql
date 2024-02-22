@@ -6,7 +6,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import jakarta.persistence.Column;
 import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class PersonVO implements Serializable {

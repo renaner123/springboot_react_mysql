@@ -40,6 +40,7 @@ export default function Books() {
             alert('Edit failed!, try again.');
         }
     }
+
     async function fetchMoreBooks(){
         const response = await api.get('api/book/v1', {
             headers: {
@@ -61,6 +62,7 @@ export default function Books() {
 
     useEffect(() => {
         fetchMoreBooks();
+    // eslint-disable-next-line
     }, []);
 
     return (

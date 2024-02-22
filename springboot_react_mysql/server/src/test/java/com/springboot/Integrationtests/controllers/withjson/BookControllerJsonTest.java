@@ -52,7 +52,7 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 	@Test
 	@Order(0)
 	public void authorization() throws JsonMappingException, JsonProcessingException{
-		AccountCredentialsVO user = new AccountCredentialsVO("leandro", "admin123");
+		AccountCredentialsVO user = new AccountCredentialsVO("renan", "admin123");
 		var accessToken = 
 				given()
 				    .basePath("/auth/signin")

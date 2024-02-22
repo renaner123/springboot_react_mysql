@@ -16,6 +16,8 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @JsonPropertyOrder({"id", "author", "launch_date", "price", "title"})
 public class BookVO extends RepresentationModel<BookVO> implements Serializable {
 
+	private static final long serialVersionUID = -2350504472128695640L;
+
 	@JsonProperty("id")
 	@Mapping("id")
     private Long key;

@@ -15,7 +15,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
     @Query("UPDATE Person p SET p.enabled = false WHERE p.id =:id")
     void disablePerson(@Param("id") Long id);
 	
-	// Retornar leandro caso ache %and%
+	// Retornar renan caso ache %and%
 	// LIKE pode não ser interessante se tiver muitos dados. Verificar com equipe de banco de dados.
 	@Query("SELECT p FROM Person p WHERE p.firstName LIKE LOWER(CONCAT ('%',:firstName,'%'))")
 	Page<Person> findPersonsByName(@Param("firstName") String firstName, Pageable pageable);

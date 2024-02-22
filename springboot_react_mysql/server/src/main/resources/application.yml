@@ -1,9 +1,9 @@
 server:
-    port: 8080
+    port: 80
 cors:
     originPatterns: http://localhost:3000,http://localhost:8080
 file:
-    upload-dir: /Codes
+    upload-dir: /home/uploadDir
 security:
     jwt:
         token:
