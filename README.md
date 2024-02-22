@@ -1,4 +1,4 @@
-[![Docker Hub Repo](https://img.shields.io/docker/pulls/renandocker123/springboot_aws.svg)](https://hub.docker.com/repository/docker/renandocker123/springboot_aws)
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/renandocker123/springboot_react_mysql.svg)](https://hub.docker.com/repository/docker/renandocker123/springboot_react_mysql)
 
 "# springboot_aws"
 

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.springboot</groupId>
-	<artifactId>springboot_aws</artifactId>
+	<artifactId>springboot_react_mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot_aws</name>
+	<name>springboot_react_mysql</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
