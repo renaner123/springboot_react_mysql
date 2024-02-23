@@ -20,7 +20,7 @@ public class OpenApiConfig {
                 .description("Spring Boot AWS")
                 .version("1.0.0")
                 .termsOfService(null)
-                .description("REST API's RESTFul do 0 à AWS c. Spring Boot 3 Java e Docker")
+                .description("REST API's RESTFul com Spring Boot 3 Java e Docker")
                 .license(new License().name("Apache 2.0").url("http://springdoc.org"))
             );
     }
