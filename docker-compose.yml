@@ -38,7 +38,7 @@ services:
       - spring-mysql
 
   react_app:
-    image: renandocker123/springboot_backend_mysql-react_app
+    image: renandocker123/springboot_react_app
     build: ./springboot_react_mysql/client/
     working_dir: /springboot_react_mysql/client/
     restart: always

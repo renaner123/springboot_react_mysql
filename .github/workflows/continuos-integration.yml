@@ -51,9 +51,16 @@ jobs:
       working-directory: ./
       run: docker compose build
 
-    - name: Push to Docker Hub Container Registry
+    - name: Push backend image Docker to Hub Container Registry
       run: |
-        docker tag ${{ secrets.DOCKER_USERNAME }}/springboot_react_mysql:latest ${{ secrets.DOCKER_USERNAME }}/springboot_react_mysql:${{ github.run_id }}
+        docker tag ${{ secrets.DOCKER_USERNAME }}/springboot_backend_mysql:latest ${{ secrets.DOCKER_USERNAME }}/springboot_backend_mysql:${{ github.run_id }}
 
-        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_react_mysql:${{ github.run_id }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_react_mysql:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_backend_mysql:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_backend_mysql:latest
+
+    - name: Push frontend image Docker to Hub Container Registry
+      run: |
+        docker tag ${{ secrets.DOCKER_USERNAME }}/springboot_react_app:latest ${{ secrets.DOCKER_USERNAME }}/springboot_react_app:${{ github.run_id }}
+
+        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_react_app:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/springboot_react_app:latest
