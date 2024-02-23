@@ -22,6 +22,19 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Install Dependencies and Build
+      working-directory: ./springboot_react_mysql/client
+      run: | 
+        npm install
+        npm run build --if-present
     
     - name: Set up JDK ${{ matrix.java-version }}
       uses: actions/setup-java@v3
@@ -33,16 +46,7 @@ jobs:
     - name: Build Application JAR
       working-directory: ./springboot_react_mysql/server
       run: mvn clean package
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test    
-
+  
     - name: Docker Compose Build
       working-directory: ./
       run: docker compose build

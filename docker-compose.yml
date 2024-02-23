@@ -22,7 +22,7 @@ services:
   springboot_backend_mysql:
     image: renandocker123/springboot_backend_mysql
     restart: always
-    build: /springboot_react_mysql/server/
+    build: ./springboot_react_mysql/server/
     working_dir: /springboot_react_mysql/server/
     environment:
       TZ: America/Sao_Paulo
@@ -39,7 +39,8 @@ services:
 
   react_app:
     image: renandocker123/springboot_backend_mysql-react_app
-    build: /springboot_react_mysql/client
+    build: ./springboot_react_mysql/client/
+    working_dir: /springboot_react_mysql/client/
     restart: always
     environment:
       - NODE_ENV=production
