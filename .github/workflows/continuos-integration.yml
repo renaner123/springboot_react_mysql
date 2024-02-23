@@ -3,8 +3,7 @@ name: Continuous Integration with Github Actions
 on:
   push:
     branches:
-      - docker-react-server
-
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
