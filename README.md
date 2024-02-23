@@ -1,4 +1,6 @@
-[![Docker Hub Repo](https://img.shields.io/docker/pulls/renandocker123/springboot_react_mysql.svg)](https://hub.docker.com/repository/docker/renandocker123/springboot_react_mysql)
+[![Docker Hub Client](https://img.shields.io/docker/pulls/renandocker123/springboot_react_app.svg)](https://hub.docker.com/repository/docker/renandocker123/springboot_react_app)
+[![Docker Hub Server](https://img.shields.io/docker/pulls/renandocker123/springboot_backend_mysql.svg)](https://hub.docker.com/repository/docker/springboot_backend_mysql)
+[![Continuous Integration Docker Hub](https://github.com/renaner123/springboot_react_mysql/actions/workflows/continuos-integration.yml/badge.svg)](https://github.com/renaner123/springboot_react_mysql/actions/workflows/continuos-integration.yml)
 
 "# springboot_aws"
 
