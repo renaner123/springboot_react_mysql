@@ -1,11 +1,11 @@
 # Development Stage
 FROM node:21-slim AS development
 
-WORKDIR /app
+WORKDIR /springboot_react_mysql/client
 
-COPY package*.json /app/
-COPY public/ /app/public
-COPY src/ /app/src
+COPY package*.json /springboot_react_mysql/client
+COPY public/ /springboot_react_mysql/client/public
+COPY src/ /springboot_react_mysql/client/src
 
 RUN npm install
 
@@ -16,11 +16,11 @@ CMD ["npm", "start"]
 # Production Stage
 FROM node:21-slim AS production
 
-WORKDIR /app
+WORKDIR /springboot_react_mysql/client
 
-COPY package*.json /app/
-COPY public/ /app/public
-COPY src/ /app/src
+COPY package*.json /springboot_react_mysql/client/
+COPY public/ /springboot_react_mysql/client/public
+COPY src/ /springboot_react_mysql/client/src
 
 RUN npm install && npm run build
 
