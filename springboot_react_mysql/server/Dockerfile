@@ -8,7 +8,7 @@ COPY pom.xml /springboot_react_mysql/server/pom.xml
 RUN mvn dependency:go-offline
 
 COPY src /springboot_react_mysql/server/src
-RUN mvn install -DskipTests
+RUN mvn install
 
 FROM builder as dev-envs
 

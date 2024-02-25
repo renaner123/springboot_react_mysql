@@ -6,7 +6,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
-O projeto é uma aplicação de API RESTful, seguindo  desenvolvida utilizando Spring Boot 3 e Java 21. Decidi trabalhar nesse projeto para aprimorar minhas habilidades em desenvolvimento de software e revisar conceitos arquiteturais REST/RESTful.
+O projeto é uma aplicação de API RESTful, desenvolvida utilizando Spring Boot 3 e Java 21. Decidi trabalhar nesse projeto para aprimorar minhas habilidades em desenvolvimento de software e revisar conceitos arquiteturais REST/RESTful.
 
 O objetivo principal do projeto é criar uma API robusta e escalável que integre-se com um banco de dados MySQL e ofereça suporte a diferentes formatos de conteúdo, como JSON, XML e YAML, através da negociação de conteúdo. Implementei também autenticação com JWT e Spring Security para garantir a segurança da API.
 
@@ -48,7 +48,7 @@ Este repositório inclui um fluxo de trabalho do GitHub Actions que representa u
 A adição de etapas de implantação contínua (CD) dependerá das necessidades específicas do projeto e do ambiente de implantação. Por exemplo, poderíamos adicionar etapas para implantar as imagens Docker em um ambiente de produção após a conclusão bem-sucedida da construção, ou ainda utilizar serviços específicos de provedores de nuvem para gerenciar o processo de implantação. Um exemplo de implantação na AWS se encontra na branch `aws-ci`.
 #### Etapas
 
-Abaixo é possível observar as etapas realizadas desde o desenvolvimento até o envio para o Docker Hub, conforme configuração [fluxo de trabalho](.github/workflows/continuos-integration.yml).
+Abaixo é possível observar as etapas realizadas, desde o desenvolvimento até o envio para o Docker Hub, conforme configurações do [fluxo de trabalho](.github/workflows/continuos-integration.yml).
 
 ![](modelagem/flow_dockerhub.drawio.png)
 
@@ -169,8 +169,6 @@ Para obter uma cópia deste repositório e testar as funcionalidades, siga estas
 
 - Ter instalado o [Docker](https://www.docker.com) e [Docker Compose](https://docs.docker.com/compose/)
 
-
-
 ### Instalação
 
 Este é o cenário mais simples para subir o ambiente de desenvolvimento com um único comando. Tanto o `Client` quanto o `Server` são executados dentro de contêineres Docker, além do serviço do banco de dados, o `MySQL`.
@@ -211,12 +209,54 @@ Além da instalação utilizando o `build` local, também é possível executar 
 
 Ou seja, para executar a aplicação é necessário apenas ter o docker-compose.yml sem o build e o Docker/Docker Compose instalado.
 
-<!-- USAGE EXAMPLES -->
+### Instalação sem imagens Docker
+
+Para testar a aplicação sem o uso dos contêineres, é necessário ter todo o ambiente de desenvolvimento preparado com:
+- Java 21
+- Node 20
+- MySQL Server 8.3
+- Maven 3.8.4
+- Git
+- Spring Tools Suite (opcional)
+- HeidiSQL/MySQL Workbench (opcional) para gerenciar o banco
+
+Com o ambiente preperado, os seguintes passos são necessários para executar o servidor:
+
+
+```bash
+cd ~
+git clone https://github.com/renaner123/springboot_react_mysql.git
+```
+
+Em seguida, para iniciar o servidor:
+
+```bash
+cd springboot_react_mysql/server
+```
+
+Instalar e compilar o projeto
+
+```
+mvn install
+```
+
+Caso queira rodar os testes:
+
+```bash
+# Todos os testes
+mvn test
+```
+Iniciar a aplicação e aplicar as migration
+
+```bash
+mvn spring-boot:run
+```
+
 ## Uso
 
 ### React APP - Front-end 
 
-Para testar a aplicação utilizando o front-end de exemplo, é necessário acessar a URL do `front-end` e se autenticar conforme os dados da tabela abaixo. A aplicação faz o consumo da API utilizando o `axios`.
+Para testar a aplicação utilizando uma aplicação front-end, foi implementado uma simples aplicação utilizando React, pois não é o foco do projeto. Para fazer o acesso é necessário utilizar a URL do `front-end` e se autenticar conforme os dados da tabela abaixo. A aplicação faz o consumo da API utilizando o `axios`.
 
 A aplicação React consome os seguintes recursos:
 
@@ -238,13 +278,13 @@ A aplicação React consome os seguintes recursos:
 
 ### Postman
 
-Para testar todas os recursos do back-end, deixei uma [coleção](RESTful%20API%20with%20Java%2021%20and%20Spring%20Boot%203.postman_collection.json) e um [environment](SPRING_BOOT_JAVA.postman_environment.json) que pode ser importadas no Postman ou outras ferramentas para interagir com APIs de maneira eficiente. 
+Para testar todas os recursos do back-end, deixei uma [coleção](RESTful%20API%20with%20Java%2021%20and%20Spring%20Boot%203.postman_collection.json) e um [environment](SPRING_BOOT_JAVA.postman_environment.json) que podem ser importadas no Postman ou em outras ferramentas que interajam com APIs de maneira eficiente. 
 
 > Todos os recursos disponíveis, assim como, as informações necessárias para inserir no corpo do pedido e o retorno das requisições, podem ser vistas no [SwaggerHub](https://app.swaggerhub.com/apis/RENANRODOLFODEV/res-tful_api_with_java_21_and_spring_boot/0.0.1) ou no link do swagger-ui.
 
 ## Contribua com o projeto
 
-Contribuições são o que tornam a comunidade de código aberto um lugar tão incrível para aprender, inspirar e criar. Qualquer contribuição que você faça é muito apreciada.
+Contribuições são o que tornam a comunidade de código aberto um lugar tão incrível para aprender, inspirar e criar. Qualquer contribuição que você faça é muito apreciada, de preferência para melhorar a organização, fluídez e boas práticas de projeto.
 
 Se você tiver uma sugestão que possa tornar isso melhor, por favor, faça um fork do repositório e crie um pull request. Você também pode simplesmente abrir uma issue com a tag "melhoria". Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
@@ -254,13 +294,6 @@ Se você tiver uma sugestão que possa tornar isso melhor, por favor, faça um f
 1. Faça o push para a branch (`git push origin feature/AmazingFeature`)
 1. Abra um Pull Request
 
-
-
-## Licença
-
-Distribuído sob a Licença MIT. Veja `LICENSE.txt` para mais informações.
-
-
 ## Contato
 
 Renan Rodolfo da Silva
@@ -268,5 +301,7 @@ Renan Rodolfo da Silva
 [![Gmail](https://img.shields.io/badge/Gmail-%23EA4335?logo=gmail&logoColor=white)](https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=renanrodolfo.dev@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/renanrodolfo/)
 
+## Licença
 
+Distribuído sob a Licença MIT. Veja `LICENSE.txt` para mais informações.
 
