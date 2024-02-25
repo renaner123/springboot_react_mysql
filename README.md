@@ -77,11 +77,18 @@ Abaixo é possível observar as etapas realizadas, desde o desenvolvimento até 
       <a href="#arquitetura">Arquitetura</a>
     </li>
     <li><a href="#features">Features</a></li>
+      <ul>
+        <li><a href="#authentication">Autenticação</a></li>
+        <li><a href="#book-necessário-autenticação">Book</a></li>
+        <li><a href="#person-necessário-autenticação">Person</a></li>
+        <li><a href="#upload-and-download-file-necessário-autenticação">Upload and Download Files</a></li>
+      </ul>
     <li><a href="#começando">Começando</a></li>
       <ul>
         <li><a href="#pré-requisitos">Pré-requisitos</a></li>
         <li><a href="#instalação">Instalação</a></li>
         <li><a href="#instalação-usando-imagens-do-docker-hub">Instalação Usando imagens do Docker Hub</a></li>
+        <li><a href="#instalação-sem-imagens-docker">Instalação sem imagens Docker</a></li>
       </ul>
     </li>
     <li><a href="#uso">Uso</a></li>
@@ -90,8 +97,8 @@ Abaixo é possível observar as etapas realizadas, desde o desenvolvimento até 
       <li><a href="#postman">Consumo pelo Postman</a></li>
     </ul>
     <li><a href="#contribua-com-o-projeto">Contribua com o Projeto</a></li>
-    <li><a href="#licença">Licença</a></li>
     <li><a href="#contato">Contato</a></li>
+    <li><a href="#licença">Licença</a></li>
   </ol>
 </details>
 
@@ -114,7 +121,7 @@ Na imagem abaixo, apresento uma visão simplificada da arquitetura do projeto, d
 
 O back-end do projeto fornece as seguintes features:
 
-### Autenticação
+### Authentication
 1. **Gerar AccessToken:**
    - Permite aos usuários autenticarem-se na API gerando um AccessToken usando seu `username` e `password`. O AccessToken é um JWT (JSON Web Token) gerado usando um secret-key codificado em base64 e é usado para inicializar o algoritmo HMAC256, que assina os tokens JWT com uma validade de 1 hora.
 2. **Atualizar AccessToken Expirado:**
@@ -148,7 +155,7 @@ O back-end do projeto fornece as seguintes features:
 7. **Deletar uma pessoa:**
    - Remove uma pessoa existente (pelo id) da base de dados.
 
-### Files (Necessário autenticação)
+### Upload and Download File (Necessário autenticação)
 1. **Carregar um arquivo e salvar no armazenamento no ambiente de desenvolvimento:**
    - Permite carregar um arquivo para a API e salvá-lo no ambiente de desenvolvimento.
 2. **Carregar múltiplos arquivos e salvar no armazenamento no ambiente de desenvolvimento:**
