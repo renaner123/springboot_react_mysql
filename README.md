@@ -45,7 +45,7 @@ Em resumo, este projeto foi uma oportunidade de aplicar e consolidar meus conhec
 
 Este repositório inclui um fluxo de trabalho do GitHub Actions que representa uma integração contínua (CI). Esse fluxo de trabalho é responsável por instalar, testar e enviar os serviços do repositório em forma de contêineres Docker para o DockerHub, preparando o projeto para ser implantado.
 
-A adição de etapas de implantação contínua (CD) dependerá das necessidades específicas do projeto e do ambiente de implantação. Por exemplo, poderíamos adicionar etapas para implantar as imagens Docker em um ambiente de produção após a conclusão bem-sucedida da construção, ou ainda utilizar serviços específicos de provedores de nuvem para gerenciar o processo de implantação. Um exemplo de implantação na AWS se encontra na branch `aws-ci`.
+A adição de etapas de implantação contínua (CD) dependerá das necessidades específicas do projeto e do ambiente de implantação. Por exemplo, poderíamos adicionar etapas para implantar as imagens Docker em um ambiente de produção após a conclusão bem-sucedida da construção, ou ainda utilizar serviços específicos de provedores de nuvem para gerenciar o processo de implantação. Um exemplo de implantação na AWS se encontra no arquivo [aws-ci-cd](workflows-examples/aws-ci-cd.yml).
 #### Etapas
 
 Abaixo é possível observar as etapas realizadas, desde o desenvolvimento até o envio para o Docker Hub, conforme configurações do [fluxo de trabalho](.github/workflows/continuos-integration.yml).
