@@ -1,4 +1,4 @@
-package com.springboot.handler;
+package com.springboot.exceptions.handler;
 
 import java.util.Date;
 
