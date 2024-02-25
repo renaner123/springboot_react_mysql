@@ -2,8 +2,8 @@ name: Continuous Integration with Github Actions
 
 on:
   release:
-    types: [created]
-    
+    types: [created, published]
+
 jobs:
   build:
     runs-on: ubuntu-latest

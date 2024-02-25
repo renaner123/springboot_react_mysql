@@ -238,7 +238,7 @@ git clone https://github.com/renaner123/springboot_react_mysql.git
 Em seguida, para iniciar o servidor:
 
 ```bash
-cd springboot_react_mysql/server
+cd springboot_react_mysql/springboot_react_mysql/server
 ```
 
 Instalar e compilar o projeto
@@ -257,6 +257,14 @@ Iniciar a aplicação e aplicar as migration
 
 ```bash
 mvn spring-boot:run
+```
+
+Caso queira executar o cliente HTTP em React, considereando que ainda está no mesmo diretório, é necessário alterar para o diretório client, instalar as dependências e iniciar a aplicação conforme exemplo abaixo. Lembrando, que essa aplicação não é o foco do projeto. 
+
+```bash
+cd ../client
+npm install
+npm start
 ```
 
 ## Uso
